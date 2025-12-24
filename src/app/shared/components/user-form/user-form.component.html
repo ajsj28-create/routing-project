@@ -1,0 +1,62 @@
+<h2>Form</h2>
+<button mat-mini-fab class="bg-secondary text-white" routerLink="/home">
+    <mat-icon>arrow_back</mat-icon>
+</button>
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card my-3">
+            <div class="card-body">
+                <h2>Add New User</h2>
+                <form #userForm="ngForm" (ngSubmit)="onUserAdd()">
+                    <mat-form-field appearance="fill" class="w-100">
+                        <mat-label>Name</mat-label>
+                        <input
+                        ngModel 
+                        required
+                        name="name"
+                        matInput>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" class="w-100">
+                        <mat-label>Email</mat-label>
+                        <input
+                        ngModel 
+                        required
+                        name="email"
+                        matInput>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" class="w-100">
+                        <mat-label>Contact</mat-label>
+                        <input
+                        ngModel 
+                        required
+                        name="contact"
+                        matInput>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" class="w-100">
+                        <mat-label>Department</mat-label>
+                        <mat-select
+                        ngModel
+                        required
+                        name="department">
+                        <mat-option value="IT">IT</mat-option>
+                        <mat-option value="Marketing">Marketing</mat-option>
+                        <mat-option value="Finance">Finance</mat-option>
+                        <mat-option value="HR">HR</mat-option>
+                        <mat-option value="Operations">Operations</mat-option>
+                        <mat-option value="Sales">Sales</mat-option>
+                        </mat-select>
+                      </mat-form-field>  
+                      <mat-form-field appearance="fill" class="w-100">
+                        <mat-label>Image Url</mat-label>
+                        <input
+                        ngModel 
+                        required
+                        name="userImage"
+                        matInput>
+                    </mat-form-field>
+                    <button mat-raised-button class="btn-block bg-secondary text-white">Add New User</button>                                                                                
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
