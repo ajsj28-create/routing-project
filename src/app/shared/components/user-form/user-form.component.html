@@ -1,13 +1,15 @@
-<button mat-mini-fab class="bg-secondary text-white" routerLink="">
-    <mat-icon>arrow_back</mat-icon>
-</button>
-<div class="row justify-content-center">
+<div class="row">
+    <div class="col-md-3 mb-3 mb-md-0">
+        <button mat-mini-fab class="bg-secondary text-white" routerLink="">
+            <mat-icon>arrow_back</mat-icon>
+        </button>        
+    </div>
     <div class="col-md-6">
-        <div class="card mt-3 mt-md-0">
+        <div class="card">
             <div class="card-body">
                 <h2>{{isEditMode ? 'Update User' : 'Add User'}}</h2>
                 <form #userForm="ngForm" (ngSubmit)="onUserAdd()">
-                    <mat-form-field appearance="fill" class="w-100">
+                    <mat-form-field appearance="fill" class="w-100 form-group">
                         <mat-label>Name</mat-label>
                         <input
                         ngModel 
@@ -15,23 +17,33 @@
                         name="name"
                         matInput>
                     </mat-form-field>
-                    <mat-form-field appearance="fill" class="w-100">
+                    <mat-form-field appearance="fill" class="w-100 form-group">
                         <mat-label>Email</mat-label>
                         <input
+                        #emailControl="ngModel"
                         ngModel 
                         required
+                        pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
                         name="email"
                         matInput>
+                        <mat-error *ngIf="emailControl.hasError('pattern')">
+                            Invalid email
+                        </mat-error>
                     </mat-form-field>
-                    <mat-form-field appearance="fill" class="w-100">
+                    <mat-form-field appearance="fill" class="w-100 form-group">
                         <mat-label>Contact</mat-label>
                         <input
+                        #contactControl="ngModel"
                         ngModel 
                         required
+                        pattern="^[0-9]{10}$"
                         name="contact"
                         matInput>
+                        <mat-error *ngIf="contactControl.hasError('pattern')">
+                            Contact must be 10 digit
+                        </mat-error>
                     </mat-form-field>
-                    <mat-form-field appearance="fill">
+                    <mat-form-field appearance="fill" class="form-group">
                         <mat-label>Joining Date</mat-label>
                         <input 
                         ngModel
@@ -43,7 +55,7 @@
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>                    
-                    <mat-form-field appearance="fill" class="w-100">
+                    <mat-form-field appearance="fill" class="w-100 form-group">
                         <mat-label>Image Url</mat-label>
                         <input
                         ngModel 
@@ -51,7 +63,7 @@
                         name="userImage"
                         matInput>
                     </mat-form-field>                    
-                    <mat-form-field appearance="fill" class="mr-5">
+                    <mat-form-field appearance="fill" class="mr-5 form-group">
                         <mat-label>Department</mat-label>
                         <mat-select
                         ngModel
@@ -65,7 +77,7 @@
                         <mat-option value="Sales">Sales</mat-option>
                         </mat-select>
                     </mat-form-field>  
-                    <mat-form-field appearance="fill">
+                    <mat-form-field appearance="fill" class="form-group">
                         <mat-label>Card Color</mat-label>
                         <mat-select
                         #selectControl
