@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { IUser } from '../../models/users';
+import { Iuser } from '../../models/users';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -10,7 +9,7 @@ import { UserService } from '../../services/user.service';
 })
 export class UserDashComponent implements OnInit {
 
-  usersArray: Array<IUser> = [];
+  usersArray: Array<Iuser> = [];
 
   constructor(
     private _userService: UserService
@@ -28,7 +27,4 @@ export class UserDashComponent implements OnInit {
       error: err => {}
     })
   }
-
-
-
 }

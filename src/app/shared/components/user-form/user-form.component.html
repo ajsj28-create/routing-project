@@ -1,12 +1,11 @@
-<h2>Form</h2>
-<button mat-mini-fab class="bg-secondary text-white" routerLink="/home">
+<button mat-mini-fab class="bg-secondary text-white" routerLink="">
     <mat-icon>arrow_back</mat-icon>
 </button>
 <div class="row justify-content-center">
     <div class="col-md-6">
-        <div class="card my-3">
+        <div class="card mt-3 mt-md-0">
             <div class="card-body">
-                <h2>Add New User</h2>
+                <h2>{{isEditMode ? 'Update User' : 'Add User'}}</h2>
                 <form #userForm="ngForm" (ngSubmit)="onUserAdd()">
                     <mat-form-field appearance="fill" class="w-100">
                         <mat-label>Name</mat-label>
@@ -32,29 +31,71 @@
                         name="contact"
                         matInput>
                     </mat-form-field>
-                    <mat-form-field appearance="fill" class="w-100">
-                        <mat-label>Department</mat-label>
-                        <mat-select
+                    <mat-form-field appearance="fill">
+                        <mat-label>Joining Date</mat-label>
+                        <input 
                         ngModel
                         required
-                        name="department">
-                        <mat-option value="IT">IT</mat-option>
-                        <mat-option value="Marketing">Marketing</mat-option>
-                        <mat-option value="Finance">Finance</mat-option>
-                        <mat-option value="HR">HR</mat-option>
-                        <mat-option value="Operations">Operations</mat-option>
-                        <mat-option value="Sales">Sales</mat-option>
-                        </mat-select>
-                      </mat-form-field>  
-                      <mat-form-field appearance="fill" class="w-100">
+                        name="joiningDate"
+                        matInput 
+                        [matDatepicker]="picker"
+                        [max]="currentDate">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>                    
+                    <mat-form-field appearance="fill" class="w-100">
                         <mat-label>Image Url</mat-label>
                         <input
                         ngModel 
                         required
                         name="userImage"
                         matInput>
-                    </mat-form-field>
-                    <button mat-raised-button class="btn-block bg-secondary text-white">Add New User</button>                                                                                
+                    </mat-form-field>                    
+                    <div class="d-flex">
+                        <mat-form-field appearance="fill" class="flex-fill">
+                            <mat-label>Department</mat-label>
+                            <mat-select
+                            ngModel
+                            required
+                            name="department">
+                            <mat-option value="IT">IT</mat-option>
+                            <mat-option value="Marketing">Marketing</mat-option>
+                            <mat-option value="Finance">Finance</mat-option>
+                            <mat-option value="HR">HR</mat-option>
+                            <mat-option value="Operations">Operations</mat-option>
+                            <mat-option value="Sales">Sales</mat-option>
+                            </mat-select>
+                        </mat-form-field>  
+                        <mat-form-field appearance="fill" class="flex-fill ml-3">
+                            <mat-label>Card Color</mat-label>
+                            <mat-select
+                            #selectControl
+                            ngModel
+                            required
+                            name="color">
+                            <mat-select-trigger>
+                                <div>
+                                  <span 
+                                  class="w-100 d-inline-block {{selectControl.value}}"
+                                  style="height: 12px;">
+                                  </span>
+                                </div>
+                            </mat-select-trigger>
+                            <mat-option value="color1">Yellow-Green</mat-option>
+                            <mat-option value="color2">Pink-Indigo</mat-option>
+                            <mat-option value="color3">Yellow-Orange</mat-option>
+                            <mat-option value="color4">Cyan-Skyblue</mat-option>
+                            </mat-select>
+                        </mat-form-field>                         
+                    </div>                   
+                    <button 
+                    *ngIf="!isEditMode"
+                    mat-raised-button class="btn-block bg-secondary text-white">Add User</button>
+                    <button
+                    (click)="onUserUpdate()"
+                    type="button" 
+                    *ngIf="isEditMode"
+                    mat-raised-button class="btn-block bg-secondary text-white">Update User</button>                                                                                
                 </form>
             </div>
         </div>

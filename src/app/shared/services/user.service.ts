@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IUser, Ires } from '../models/users';
+import { Iuser, Ires } from '../models/users';
 import { Observable, of } from 'rxjs';
 
 @Injectable({
@@ -7,7 +7,7 @@ import { Observable, of } from 'rxjs';
 })
 export class UserService {
 
-  usersArray: Array<IUser> = JSON.parse(localStorage.getItem('usersArray') as string) || [
+  usersArray: Array<Iuser> = JSON.parse(localStorage.getItem('usersArray') as string) || [
     {
       id: '101',
       name: 'Ankit Sharma',
@@ -16,6 +16,8 @@ export class UserService {
       department: 'IT',
       role: 'Admin',
       status: 'active',
+      joiningDate: '2022-04-15',
+      color: 'color1',
       userImage: 'https://picsum.photos/seed/user101/200/200'
     },
     {
@@ -26,6 +28,8 @@ export class UserService {
       department: 'Marketing',
       role: 'Editor',
       status: 'active',
+      joiningDate: '2021-08-10',
+      color: 'color2',
       userImage: 'https://picsum.photos/seed/user102/200/200'
     },
     {
@@ -36,6 +40,8 @@ export class UserService {
       department: 'Finance',
       role: 'Viewer',
       status: 'inactive',
+      joiningDate: '2020-01-05',
+      color: 'color3',
       userImage: 'https://picsum.photos/seed/user103/200/200'
     },
     {
@@ -46,6 +52,8 @@ export class UserService {
       department: 'HR',
       role: 'Editor',
       status: 'active',
+      joiningDate: '2023-02-20',
+      color: 'color4',
       userImage: 'https://picsum.photos/seed/user104/200/200'
     },
     {
@@ -56,6 +64,8 @@ export class UserService {
       department: 'Operations',
       role: 'Viewer',
       status: 'active',
+      joiningDate: '2019-11-12',
+      color: 'color1',
       userImage: 'https://picsum.photos/seed/user105/200/200'
     },
     {
@@ -66,6 +76,8 @@ export class UserService {
       department: 'IT',
       role: 'Admin',
       status: 'active',
+      joiningDate: '2022-07-01',
+      color: 'color2',
       userImage: 'https://picsum.photos/seed/user106/200/200'
     },
     {
@@ -76,6 +88,8 @@ export class UserService {
       department: 'Sales',
       role: 'Viewer',
       status: 'inactive',
+      joiningDate: '2021-03-18',
+      color: 'color3',
       userImage: 'https://picsum.photos/seed/user107/200/200'
     },
     {
@@ -86,13 +100,15 @@ export class UserService {
       department: 'Marketing',
       role: 'Editor',
       status: 'active',
+      joiningDate: '2023-09-05',
+      color: 'color4',
       userImage: 'https://picsum.photos/seed/user108/200/200'
     }
   ];
 
   constructor() { }
 
-  fetchAll(): Observable<Ires<Array<IUser>>> {
+  fetchAll(): Observable<Ires<Array<Iuser>>> {
     return of({
       success: true,
       data: this.usersArray,
@@ -100,15 +116,15 @@ export class UserService {
     })
   }
 
-  fetchSingle(id: string): Observable<Ires<IUser>> {
+  fetchSingle(id: string): Observable<Ires<Iuser>> {
     return of({
       success: true,
-      data: this.usersArray.find(ele => ele.id === id) as IUser,
+      data: this.usersArray.find(ele => ele.id === id) as Iuser,
       msg: `User with id ${id} fetched successfully!`
     })    
   }
 
-  postUser(obj: IUser): Observable<Ires<IUser>> {
+  postUser(obj: Iuser): Observable<Ires<Iuser>> {
     this.usersArray.push(obj)
     this.setLocalStorage()
     return of({
@@ -118,7 +134,18 @@ export class UserService {
     }) 
   }
 
-  deleteUser(obj: IUser) {
+  patchUser(obj: Iuser): Observable<Ires<Iuser>> {
+    let ind = this.usersArray.findIndex(ele => ele.id === obj.id)
+    this.usersArray[ind] = obj
+    this.setLocalStorage()
+    return of({
+      success: true,
+      data: obj,
+      msg: `User with id ${obj.id} updated successfully!`
+    }) 
+  }
+
+  deleteUser(obj: Iuser) {
     let ind = this.usersArray.findIndex(ele => ele.id === obj.id)
     this.usersArray.splice(ind, 1)
     this.setLocalStorage()

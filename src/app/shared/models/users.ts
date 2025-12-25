@@ -10,8 +10,15 @@ export type UserDepartment =
   | 'Operations'
   | 'Sales'
 ;
+
+export type UserColor =
+    'color1'
+  | 'color2'
+  | 'color3'
+  | 'color4'
+;
   
-export interface IUser {
+export interface Iuser {
   id: string;
   name: string;
   email: string;
@@ -19,6 +26,8 @@ export interface IUser {
   department: UserDepartment;
   role: UserRole;
   status: UserStatus;
+  joiningDate: string;
+  color: UserColor;
   userImage: string;
 }
 

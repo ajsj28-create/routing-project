@@ -1,18 +1,20 @@
-<div class="d-flex align-items-center justify-content-center">
-    <h2 class="mb-0">Add New User</h2>
-    <button mat-mini-fab class="ml-2 bg-secondary text-white">
-        <mat-icon routerLink="/form">add</mat-icon>
-    </button>
+<h2>Welcome, to Users Dashboard !</h2>
+<div class="card d-inline-block mb-3">
+    <div class="d-flex align-items-center card-body">
+        <h2 class="mb-0">Add New User</h2>
+        <button mat-mini-fab class="ml-2 bg-secondary text-white">
+            <mat-icon routerLink="form">add</mat-icon>
+        </button>
+    </div>    
 </div>
-<h2 class="mb-0">Welcome, to Users Dashboard !</h2>
-<h3 *ngIf="usersArray.length > 0">Click on user to view or edit details</h3>
+<h3 class="mb-1" *ngIf="usersArray.length > 0">Click on user to view or edit details</h3>
 <div class="row">
     <div class="col-md-4 mb-2 mb-md-0">
         <ul class="list-group" *ngIf="usersArray.length > 0; else noUsers">
             <li class="list-group-item d-flex justify-content-between list-group-item-action"
             role="button"
             *ngFor="let user of usersArray"
-            [routerLink]="['/user', user.id]">
+            [routerLink]="['users', user.id]">
                 <div class="d-flex align-items-center">
                     <mat-icon fontIcon="fiber_manual_record"
                     [ngClass]="{
@@ -26,7 +28,7 @@
             </li>
         </ul>
         <ng-template #noUsers>
-            <h3>No users available, to add new user go to Form</h3>
+            <h3>No users available, add user to get started.</h3>
         </ng-template>        
     </div>
     <div class="col-md-8">

@@ -8,24 +8,19 @@ import { PageNotFoundComponent } from './shared/components/page-not-found/page-n
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
-  },
-  {
-    path: 'home',
     component: UserDashComponent
-  },
-  {
-    path: 'user/:id',
-    component: UserInfoComponent
-  },
-  {
-    path: 'user',
-    redirectTo: 'user/101'
   },
   {
     path: 'form',
     component: UserFormComponent
+  },
+  {
+    path: 'form/:id',
+    component: UserFormComponent
+  },
+  {
+    path: 'users/:id',
+    component: UserInfoComponent
   },
   {
     path: '**',

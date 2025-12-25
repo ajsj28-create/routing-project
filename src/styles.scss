@@ -1,5 +1,3 @@
-/* You can add global styles to this file, and also import other style files */
-
 html, body { 
     height: 100%;
 }
@@ -14,26 +12,30 @@ body {
     font-weight: 500;
 }
 
-.back-1 {
-    background-image: linear-gradient( 135deg, #FFF720 10%, #3CD500 100%);
+.color1 {
+    background-image: linear-gradient(135deg, #FFF720 10%, #3CD500 100%);
 }
 
-.back-2 {
-    background-image: linear-gradient( 135deg, #FF6FD8 10%, #3813C2 100%);
+.color2 {
+    background-image: linear-gradient(135deg, #FF6FD8 10%, #3813C2 100%);
 }
 
-.back-3 {
+.color3 {
+    background-image: linear-gradient(135deg, #FFC600 10%, #FD6E6A 100%);
+}
+
+.color4 {
+    background-image: linear-gradient(135deg, #2AFADF 10%, #4C83FF 100%);
+}
+
+.snack-success {
+    background-image: linear-gradient( 135deg, #49C628 10%, #70F570 100%);
+}
+
+.snack-warning {
     background-image: linear-gradient( 135deg, #FD6E6A 10%, #FFC600 100%);
 }
 
-.back-4 {
-    background-image: linear-gradient( 135deg, #2AFADF 10%, #4C83FF 100%);
-}
-
-.back-5 {
-    background-image: linear-gradient( 135deg, #65FDF0 10%, #1D6FA3 100%);
-}
-
-.back-6 {
-    background-image: linear-gradient( 135deg, #90F7EC 10%, #32CCBC 100%);
+.snack-success, .snack-warning {
+    color: rgba(255, 255, 255, 0.85);
 }

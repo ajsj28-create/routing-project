@@ -10,9 +10,10 @@ export class SnackbarService {
     private _snackbar: MatSnackBar
   ) { }
 
-  showAlert(msg: string, action: string = 'Close'){
+  showAlert(msg: string, type: string, action: string = 'Close'){
     this._snackbar.open(msg, action, {
       duration: 3000,
+      panelClass: [type],
       horizontalPosition: 'left',
       verticalPosition: 'bottom'
     })

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IUser } from '../../models/users';
+import { Iuser } from '../../models/users';
 import { UserService } from '../../services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
@@ -13,7 +13,7 @@ import { SnackbarService } from '../../services/snackbar.service';
 })
 export class UserInfoComponent implements OnInit {
 
-  userObj!: IUser;
+  userObj!: Iuser;
 
   constructor(
     private _userService: UserService,
@@ -24,6 +24,10 @@ export class UserInfoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getSelectedUser()
+  }
+
+  getSelectedUser() {
     let id = this._activatedRoute.snapshot.paramMap.get('id') as string
     this._userService.fetchSingle(id).subscribe({
       next: res => {
@@ -43,8 +47,8 @@ export class UserInfoComponent implements OnInit {
         if(res){
           this._userService.deleteUser(this.userObj).subscribe({
             next: res => {
-              this._snackbarService.showAlert(res.msg)
-              this._router.navigate(['/home'])
+              this._snackbarService.showAlert(res.msg, 'snack-success')
+              this._router.navigate([''])
             },
             error: err => {}
           })
@@ -52,6 +56,10 @@ export class UserInfoComponent implements OnInit {
       },
       error: err => {}
     })
+  }
+
+  onUserEdit() {
+    this._router.navigate(['form', this.userObj.id])
   }
 
 

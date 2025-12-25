@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { IUser } from '../../models/users';
+import { Iuser } from '../../models/users';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -9,11 +9,11 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 })
 export class ConfirmComponent implements OnInit {
 
-  data!: IUser;
+  data!: Iuser;
 
   constructor(
     private _confirmDialogRef: MatDialogRef<ConfirmComponent>,
-    @Inject(MAT_DIALOG_DATA) getData: IUser
+    @Inject(MAT_DIALOG_DATA) getData: Iuser
   ) {
     this.data = getData
   }
