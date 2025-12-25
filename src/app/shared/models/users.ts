@@ -26,7 +26,7 @@ export interface Iuser {
   department: UserDepartment;
   role: UserRole;
   status: UserStatus;
-  joiningDate: number;
+  joiningDate: string;
   color: UserColor;
   userImage: string;
 }
