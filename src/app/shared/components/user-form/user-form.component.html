@@ -63,41 +63,43 @@
                         name="userImage"
                         matInput>
                     </mat-form-field>                    
-                    <mat-form-field appearance="fill" class="mr-5">
-                        <mat-label>Department</mat-label>
-                        <mat-select
-                        ngModel
-                        required
-                        name="department">
-                        <mat-option value="IT">IT</mat-option>
-                        <mat-option value="Marketing">Marketing</mat-option>
-                        <mat-option value="Finance">Finance</mat-option>
-                        <mat-option value="HR">HR</mat-option>
-                        <mat-option value="Operations">Operations</mat-option>
-                        <mat-option value="Sales">Sales</mat-option>
-                        </mat-select>
-                    </mat-form-field>  
-                    <mat-form-field appearance="fill">
-                        <mat-label>Card Color</mat-label>
-                        <mat-select
-                        #selectControl
-                        ngModel
-                        required
-                        name="color">
-                        <mat-select-trigger>
-                            <div>
-                              <span 
-                              class="w-100 d-inline-block {{selectControl.value}}"
-                              style="height: 12px;">
-                              </span>
-                            </div>
-                        </mat-select-trigger>
-                        <mat-option value="color1">Yellow-Green</mat-option>
-                        <mat-option value="color2">Pink-Indigo</mat-option>
-                        <mat-option value="color3">Yellow-Orange</mat-option>
-                        <mat-option value="color4">Cyan-Skyblue</mat-option>
-                        </mat-select>
-                    </mat-form-field>                 
+                    <div class="row">
+                        <mat-form-field appearance="fill" class="col-md-6">
+                            <mat-label>Department</mat-label>
+                            <mat-select
+                            ngModel
+                            required
+                            name="department">
+                            <mat-option value="IT">IT</mat-option>
+                            <mat-option value="Marketing">Marketing</mat-option>
+                            <mat-option value="Finance">Finance</mat-option>
+                            <mat-option value="HR">HR</mat-option>
+                            <mat-option value="Operations">Operations</mat-option>
+                            <mat-option value="Sales">Sales</mat-option>
+                            </mat-select>
+                        </mat-form-field>  
+                        <mat-form-field appearance="fill" class="col-md-6">
+                            <mat-label>Card Color</mat-label>
+                            <mat-select
+                            #selectControl
+                            ngModel
+                            required
+                            name="color">
+                            <mat-select-trigger>
+                                <div>
+                                  <span 
+                                  class="w-100 d-inline-block {{selectControl.value}}"
+                                  style="height: 12px;">
+                                  </span>
+                                </div>
+                            </mat-select-trigger>
+                            <mat-option value="color1">Yellow-Green</mat-option>
+                            <mat-option value="color2">Pink-Indigo</mat-option>
+                            <mat-option value="color3">Yellow-Orange</mat-option>
+                            <mat-option value="color4">Cyan-Skyblue</mat-option>
+                            </mat-select>
+                        </mat-form-field>                        
+                    </div>                 
                     <button 
                     *ngIf="!isEditMode"
                     mat-raised-button class="btn-block bg-secondary text-white">Add User</button>
