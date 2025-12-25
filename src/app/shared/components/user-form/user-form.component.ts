@@ -50,6 +50,7 @@ export class UserFormComponent implements OnInit {
   onUserAdd() {
     if(this.userForm.valid){
       let obj = {...this.userForm.value, id: this._uuidService.uuid(), role: 'Viewer', status: 'active'}
+      console.log(obj)
       this.userForm.resetForm()
       this._userService.postUser(obj).subscribe({
         next: res => {

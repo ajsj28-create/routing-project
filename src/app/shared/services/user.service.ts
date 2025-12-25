@@ -16,7 +16,7 @@ export class UserService {
       department: 'IT',
       role: 'Admin',
       status: 'active',
-      joiningDate: '2022-04-15',
+      joiningDate: 'Fri Apr 15 2022 00:00:00 GMT+0530 (India Standard Time)',
       color: 'color1',
       userImage: 'https://picsum.photos/seed/user101/200/200'
     },
@@ -28,7 +28,7 @@ export class UserService {
       department: 'Marketing',
       role: 'Editor',
       status: 'active',
-      joiningDate: '2021-08-10',
+      joiningDate: 'Tue Aug 10 2021 00:00:00 GMT+0530 (India Standard Time)',
       color: 'color2',
       userImage: 'https://picsum.photos/seed/user102/200/200'
     },
@@ -40,7 +40,7 @@ export class UserService {
       department: 'Finance',
       role: 'Viewer',
       status: 'inactive',
-      joiningDate: '2020-01-05',
+      joiningDate: 'Sun Jan 05 2020 00:00:00 GMT+0530 (India Standard Time)',
       color: 'color3',
       userImage: 'https://picsum.photos/seed/user103/200/200'
     },
@@ -52,7 +52,7 @@ export class UserService {
       department: 'HR',
       role: 'Editor',
       status: 'active',
-      joiningDate: '2023-02-20',
+      joiningDate: 'Mon Feb 20 2023 00:00:00 GMT+0530 (India Standard Time)',
       color: 'color4',
       userImage: 'https://picsum.photos/seed/user104/200/200'
     },
@@ -64,7 +64,7 @@ export class UserService {
       department: 'Operations',
       role: 'Viewer',
       status: 'active',
-      joiningDate: '2019-11-12',
+      joiningDate: 'Tue Nov 12 2019 00:00:00 GMT+0530 (India Standard Time)',
       color: 'color1',
       userImage: 'https://picsum.photos/seed/user105/200/200'
     },
@@ -76,7 +76,7 @@ export class UserService {
       department: 'IT',
       role: 'Admin',
       status: 'active',
-      joiningDate: '2022-07-01',
+      joiningDate: 'Fri Jul 01 2022 00:00:00 GMT+0530 (India Standard Time)',
       color: 'color2',
       userImage: 'https://picsum.photos/seed/user106/200/200'
     },
@@ -88,7 +88,7 @@ export class UserService {
       department: 'Sales',
       role: 'Viewer',
       status: 'inactive',
-      joiningDate: '2021-03-18',
+      joiningDate: 'Thu Mar 18 2021 00:00:00 GMT+0530 (India Standard Time)',
       color: 'color3',
       userImage: 'https://picsum.photos/seed/user107/200/200'
     },
@@ -100,7 +100,7 @@ export class UserService {
       department: 'Marketing',
       role: 'Editor',
       status: 'active',
-      joiningDate: '2023-09-05',
+      joiningDate: 'Tue Sep 05 2023 00:00:00 GMT+0530 (India Standard Time)',
       color: 'color4',
       userImage: 'https://picsum.photos/seed/user108/200/200'
     }
