@@ -1,31 +1,39 @@
-<h2>Welcome, {{userObj.name}} !</h2>
-<button mat-mini-fab class="bg-secondary text-white" routerLink="">
-    <mat-icon>arrow_back</mat-icon>
-</button>
-<div class="row justify-content-center">
-    <div class="col-md-5">
-        <mat-card class="my-3 mat-elevation-z4 {{userObj.color}}">
-            <mat-card-title-group>
-              <mat-card-title>{{userObj.name}}</mat-card-title>
-              <mat-card-subtitle>{{userObj.department}}</mat-card-subtitle>
-              <img mat-card-sm-image [src]="userObj.userImage" onerror="this.onerror=null; this.src='data:image/png;base64,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'" alt="Img">
-            </mat-card-title-group>
-            <mat-card-content class="mb-0">
-                <p>Role: {{userObj.role}}</p>
-                <p>Email: {{userObj.email}}</p>
-                <p>Contact: {{userObj.contact}}</p>
-                <p>Joining Date: {{userObj.joiningDate | date}}</p>
-            </mat-card-content>
-            <mat-card-footer>
-                <div class="p-2 d-flex justify-content-between text-white">
-                    <button
-                    (click)="onUserEdit()"
-                    mat-button><mat-icon>edit</mat-icon></button>
-                    <button 
-                    (click)="onUserDelete()"
-                    mat-button><mat-icon>delete</mat-icon></button>
-                </div>
-            </mat-card-footer>
-        </mat-card>        
-    </div>
+<div *ngIf="userObj; else noUser">
+    <h2>Welcome, {{userObj.name}} !</h2>
+    <button mat-mini-fab class="bg-secondary text-white" routerLink="">
+        <mat-icon>arrow_back</mat-icon>
+    </button>
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <mat-card class="my-3 mat-elevation-z4 {{userObj.color}}">
+                <mat-card-title-group>
+                  <mat-card-title>{{userObj.name}}</mat-card-title>
+                  <mat-card-subtitle>{{userObj.department}}</mat-card-subtitle>
+                  <img mat-card-sm-image [src]="userObj.userImage" onerror="this.onerror=null; this.src='data:image/png;base64,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'" alt="Img">
+                </mat-card-title-group>
+                <mat-card-content class="mb-0">
+                    <p>Role: {{userObj.role}}</p>
+                    <p>Email: {{userObj.email}}</p>
+                    <p>Contact: {{userObj.contact}}</p>
+                    <p>Joining Date: {{userObj.joiningDate | date}}</p>
+                </mat-card-content>
+                <mat-card-footer>
+                    <div class="p-2 d-flex justify-content-between text-white">
+                        <button
+                        (click)="onUserEdit()"
+                        mat-button><mat-icon>edit</mat-icon></button>
+                        <button 
+                        (click)="onUserDelete()"
+                        mat-button><mat-icon>delete</mat-icon></button>
+                    </div>
+                </mat-card-footer>
+            </mat-card>        
+        </div>
+    </div>    
 </div>
+<ng-template #noUser>
+    <div class="d-flex align-items-center">
+        <mat-icon color="warn">error</mat-icon>
+        <h2 class="mb-0 ml-2">User does not exist</h2>
+    </div>    
+</ng-template>
