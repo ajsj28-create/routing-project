@@ -4,28 +4,47 @@ import { UserDashComponent } from './shared/components/user-dash/user-dash.compo
 import { UserInfoComponent } from './shared/components/user-info/user-info.component';
 import { UserFormComponent } from './shared/components/user-form/user-form.component';
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
+import { FairsDashComponent } from './shared/components/fairs-dash/fairs-dash.component';
+import { FairsDetailComponent } from './shared/components/fairs-detail/fairs-detail.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: UserDashComponent
+    redirectTo: 'users',
+    pathMatch: 'full'
   },
   {
-    path: 'form',
-    component: UserFormComponent
+    path: 'users',
+    component: UserDashComponent,
+    children: [
+      {
+        path: 'addUser',
+        component: UserFormComponent
+      },
+      {
+        path: ':id',
+        component: UserInfoComponent
+      },
+      {
+        path: ':id/editUser',
+        component: UserFormComponent
+      }
+    ]
   },
   {
-    path: 'form/:id',
-    component: UserFormComponent
-  },
-  {
-    path: 'users/:id',
-    component: UserInfoComponent
+    path: 'fairs',
+    component: FairsDashComponent,
+    children: [
+      {
+        path: ':id',
+        component: FairsDetailComponent
+      }
+    ]
   },
   {
     path: '**',
     component: PageNotFoundComponent
-  },
+  }
 ];
 
 @NgModule({

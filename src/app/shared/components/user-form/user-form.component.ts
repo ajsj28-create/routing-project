@@ -14,9 +14,11 @@ import { Iuser } from '../../models/users';
 export class UserFormComponent implements OnInit {
 
   @ViewChild('userForm') userForm!: NgForm;
-  currentDate!: Date;
+  currentDate: Date = new Date();
   isEditMode: boolean = false;
   patchUserObj!: Iuser;
+  buttonFlag: boolean = false;
+  msg!: string;
 
   constructor(
     private _uuidService: UuidService,
@@ -27,24 +29,29 @@ export class UserFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.currentDate = new Date()
-    this.getEditedUser()
-    setTimeout(() => {
-      if(this.patchUserObj){
-        this.isEditMode = true
-        this.userForm.form.patchValue(this.patchUserObj)
-      }
-    });
+    this.patchEditedUser()
   }
 
-  getEditedUser() {
-    let id = this._activatedRoute.snapshot.paramMap.get('id') as string
-    this._userService.fetchSingle(id).subscribe({
-      next: res => {
-        this.patchUserObj = res.data
-      },
-      error: err => {}
-    })
+  patchEditedUser() {
+    let id = this._activatedRoute.snapshot.params['id']
+    if(id){
+      this._userService.fetchSingle(id).subscribe({
+        next: res => {
+          this.patchUserObj = res.data
+          this.isEditMode = true
+          setTimeout(() => {
+            this.userForm.form.patchValue(res.data)
+            let role = this._activatedRoute.snapshot.queryParams['role']
+            if(role === 'Viewer'){
+              this.userForm.form.disable()
+              this.buttonFlag = true
+              this.msg = `Only Admins and Editors have access to modify details`
+            }
+          })
+        },
+        error: err => {}
+      })
+    }
   }
 
   onUserAdd() {
@@ -55,7 +62,7 @@ export class UserFormComponent implements OnInit {
       this._userService.postUser(obj).subscribe({
         next: res => {
           this._snackbarService.showAlert(res.msg, 'snack-success')
-          this._router.navigate(['/users', obj.id])
+          this._router.navigate(['users'])
         },
         error: err => {}
       })      
@@ -71,7 +78,7 @@ export class UserFormComponent implements OnInit {
       this._userService.patchUser(obj).subscribe({
         next: res => {
           this._snackbarService.showAlert(res.msg, 'snack-success')
-          this._router.navigate(['/users', obj.id])
+          this._router.navigate(['users'])
         },
         error: err => {}
       })      

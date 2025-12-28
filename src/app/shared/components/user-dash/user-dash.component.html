@@ -1,37 +1,40 @@
-<h2>Welcome, to Users Dashboard !</h2>
-<div class="card d-inline-block mb-3">
-    <div class="d-flex align-items-center card-body">
-        <h2 class="mb-0">Add New User</h2>
-        <button mat-mini-fab class="ml-2 bg-secondary text-white">
-            <mat-icon routerLink="form">add</mat-icon>
-        </button>
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-4 mb-2 mb-md-0">
+            <div class="card d-inline-block mb-3">
+                <div class="d-flex align-items-center card-body">
+                    <h2 class="mb-0">Add User</h2>
+                    <button mat-mini-fab class="ml-2 bg-secondary text-white">
+                        <mat-icon routerLink="addUser">add</mat-icon>
+                    </button>
+                </div>    
+            </div>
+            <h3 class="mb-1" *ngIf="usersArray.length > 0">Click on users below to view or edit details</h3>        
+            <ul class="list-group" *ngIf="usersArray.length > 0; else noUsers">
+                <li class="list-group-item d-flex justify-content-between list-group-item-action"
+                role="button"
+                *ngFor="let user of usersArray"
+                [routerLink]="user.id"
+                routerLinkActive="highlight"
+                [queryParams]="{role: user.role}">
+                    <div class="d-flex align-items-center">
+                        <mat-icon fontIcon="fiber_manual_record"
+                        [ngClass]="{
+                            'text-success': user.status === 'active',
+                            'text-danger': user.status === 'inactive'
+                        }"
+                        ></mat-icon>
+                        <span class="fw-500">{{user.name}} <sup class="text-warning">{{user.role}}</sup></span>
+                    </div>
+                    <span>{{user.department}}</span>
+                </li>
+            </ul>
+            <ng-template #noUsers>
+                <h3>No users available, add user to get started.</h3>
+            </ng-template>        
+        </div>
+        <div class="col-md-8">
+            <router-outlet></router-outlet>
+        </div>
     </div>    
-</div>
-<h3 class="mb-1" *ngIf="usersArray.length > 0">Click on users below to view or edit details</h3>
-<div class="row">
-    <div class="col-md-4 mb-2 mb-md-0">
-        <ul class="list-group" *ngIf="usersArray.length > 0; else noUsers">
-            <li class="list-group-item d-flex justify-content-between list-group-item-action"
-            role="button"
-            *ngFor="let user of usersArray"
-            [routerLink]="['users', user.id]">
-                <div class="d-flex align-items-center">
-                    <mat-icon fontIcon="fiber_manual_record"
-                    [ngClass]="{
-                        'text-success': user.status === 'active',
-                        'text-danger': user.status === 'inactive'
-                    }"
-                    ></mat-icon>
-                    <span class="fw-500">{{user.name}}</span>
-                </div>
-                <span>{{user.department}}</span>
-            </li>
-        </ul>
-        <ng-template #noUsers>
-            <h3>No users available, add user to get started.</h3>
-        </ng-template>        
-    </div>
-    <div class="col-md-8">
-        <!-- for child routing -->
-    </div>
 </div>

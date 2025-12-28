@@ -28,12 +28,13 @@ export class UserInfoComponent implements OnInit {
   }
 
   getSelectedUser() {
-    let id = this._activatedRoute.snapshot.paramMap.get('id') as string
-    this._userService.fetchSingle(id).subscribe({
-      next: res => {
-        this.userObj = res.data
-      },
-      error: err => {}
+    this._activatedRoute.params.subscribe(res => {
+      this._userService.fetchSingle(res['id']).subscribe({
+        next: res => {
+          this.userObj = res.data
+        },
+        error: err => {}
+      })
     })
   }
 
@@ -48,7 +49,7 @@ export class UserInfoComponent implements OnInit {
           this._userService.deleteUser(this.userObj).subscribe({
             next: res => {
               this._snackbarService.showAlert(res.msg, 'snack-success')
-              this._router.navigate([''])
+              this._router.navigate(['users'])
             },
             error: err => {}
           })
@@ -57,11 +58,5 @@ export class UserInfoComponent implements OnInit {
       error: err => {}
     })
   }
-
-  onUserEdit() {
-    this._router.navigate(['form', this.userObj.id])
-  }
-
-
 
 }

@@ -7,7 +7,7 @@ import { Observable, of } from 'rxjs';
 })
 export class UserService {
 
-  usersArray: Array<Iuser> = JSON.parse(localStorage.getItem('usersArray') as string) || [
+  usersArray: Array<Iuser> = JSON.parse(localStorage.getItem('usersArray$') as string) || [
     {
       id: '101',
       name: 'Ankit Sharma',
@@ -159,7 +159,7 @@ export class UserService {
 
 
   setLocalStorage() {
-    localStorage.setItem('usersArray', JSON.stringify(this.usersArray));
+    localStorage.setItem('usersArray$', JSON.stringify(this.usersArray));
   }
 
 }

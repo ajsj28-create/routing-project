@@ -1,0 +1,12 @@
+<div class="banner-wrapper">
+    <figure class="banner">
+        <img [src]="selectedFairObj.bannerUrl" alt="fairImg">
+        <p class="m-3 text-white">
+            <span class="d-block">Event Type: {{ selectedFairObj.type }}</span>
+            <span>Date & Time: {{ selectedFairObj.startDate * 1000 | date }}, {{ selectedFairObj.fairStartTime }}</span>
+        </p>
+    </figure>
+</div>
+<div
+[innerHTML]="selectedFairObj.candidateDescription">
+</div>

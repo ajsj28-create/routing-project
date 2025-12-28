@@ -25,6 +25,9 @@ import { UserInfoComponent } from './shared/components/user-info/user-info.compo
 import { UserFormComponent } from './shared/components/user-form/user-form.component';
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 import { ConfirmComponent } from './shared/components/confirm/confirm.component';
+import { FairsDashComponent } from './shared/components/fairs-dash/fairs-dash.component';
+import { FairsDetailComponent } from './shared/components/fairs-detail/fairs-detail.component';
+import { FairsCardComponent } from './shared/components/fairs-card/fairs-card.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,10 @@ import { ConfirmComponent } from './shared/components/confirm/confirm.component'
     UserInfoComponent,
     UserFormComponent,
     PageNotFoundComponent,
-    ConfirmComponent
+    ConfirmComponent,
+    FairsDashComponent,
+    FairsDetailComponent,
+    FairsCardComponent
   ],
   imports: [
     BrowserModule,

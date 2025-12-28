@@ -1,0 +1,13 @@
+<div class="container-fluid mt-3">
+    <div class="row">
+        <div class="col-md-4">
+            <app-fairs-card
+            *ngFor="let fair of fairsArray"
+            [inpCardObj]="fair"
+            ></app-fairs-card>
+        </div>
+        <div class="col-md-8">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

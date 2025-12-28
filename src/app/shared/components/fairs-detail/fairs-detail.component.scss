@@ -1,0 +1,28 @@
+.banner {
+    height: 30vh;
+    width: 100%;
+    position: relative;
+
+    &::after {
+        content: '';
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: linear-gradient(45deg, rgba(0, 0, 0, 0.7), rgba(255, 255, 255, 0));
+    }
+}
+
+.banner img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.banner-wrapper p {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+}
