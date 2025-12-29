@@ -32,9 +32,13 @@ export class UserDashComponent implements OnInit {
   }
 
   showFirstUser(){
-    this._router.navigate(['users', this.usersArray[0].id], {
-      queryParams: {role: this.usersArray[0].role}
-    })
+    if(this.usersArray.length > 0){
+      this._router.navigate(['users', this.usersArray[0].id], {
+        queryParams: {role: this.usersArray[0].role}
+      })
+    }else{
+      this._router.navigate(['users'])
+    }
   }
 
   getUsers() {
