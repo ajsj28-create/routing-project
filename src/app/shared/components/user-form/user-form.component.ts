@@ -62,7 +62,9 @@ export class UserFormComponent implements OnInit {
       this._userService.postUser(obj).subscribe({
         next: res => {
           this._snackbarService.showAlert(res.msg, 'snack-success')
-          this._router.navigate(['users'])
+          this._router.navigate(['users', obj.id], {
+            queryParams: {role: obj.role}
+          })
         },
         error: err => {}
       })      
@@ -73,17 +75,29 @@ export class UserFormComponent implements OnInit {
 
   onUserUpdate() {
     if(this.userForm.valid){
-      let obj = {...this.userForm.value, id: this.patchUserObj.id, role: 'Viewer', status: 'active'}
+      let obj = {...this.userForm.value, id: this.patchUserObj.id, role: this.patchUserObj.role, status: this.patchUserObj.status}
       this.userForm.resetForm()
       this._userService.patchUser(obj).subscribe({
         next: res => {
           this._snackbarService.showAlert(res.msg, 'snack-success')
-          this._router.navigate(['users'])
+          this._router.navigate(['users', obj.id], {
+            queryParams: {role: obj.role}
+          })
         },
         error: err => {}
       })      
     }else{
       this._snackbarService.showAlert(`Fill all the required fields!`, 'snack-warning')
+    }
+  }
+
+  onFormClose(){
+    if(this.patchUserObj){
+      this._router.navigate(['users', this.patchUserObj.id], {
+        queryParams: {role: this.patchUserObj.role}
+      })
+    }else{
+      this._userService.refreshDash$.next(true)
     }
   }
 

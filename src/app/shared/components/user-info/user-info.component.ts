@@ -49,7 +49,7 @@ export class UserInfoComponent implements OnInit {
           this._userService.deleteUser(this.userObj).subscribe({
             next: res => {
               this._snackbarService.showAlert(res.msg, 'snack-success')
-              this._router.navigate(['users'])
+              this._userService.refreshDash$.next(true)
             },
             error: err => {}
           })

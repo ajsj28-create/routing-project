@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Iuser, Ires } from '../models/users';
-import { Observable, of } from 'rxjs';
+import { Observable, Subject, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  usersArray: Array<Iuser> = JSON.parse(localStorage.getItem('usersArray$') as string) || [
+  refreshDash$: Subject<boolean> = new Subject()
+
+  usersArray: Array<Iuser> = [
     {
       id: '101',
       name: 'Ankit Sharma',
@@ -126,7 +128,7 @@ export class UserService {
 
   postUser(obj: Iuser): Observable<Ires<Iuser>> {
     this.usersArray.push(obj)
-    this.setLocalStorage()
+    // this.setLocalStorage()
     return of({
       success: true,
       data: obj,
@@ -137,7 +139,7 @@ export class UserService {
   patchUser(obj: Iuser): Observable<Ires<Iuser>> {
     let ind = this.usersArray.findIndex(ele => ele.id === obj.id)
     this.usersArray[ind] = obj
-    this.setLocalStorage()
+    // this.setLocalStorage()
     return of({
       success: true,
       data: obj,
@@ -148,7 +150,7 @@ export class UserService {
   deleteUser(obj: Iuser) {
     let ind = this.usersArray.findIndex(ele => ele.id === obj.id)
     this.usersArray.splice(ind, 1)
-    this.setLocalStorage()
+    // this.setLocalStorage()
     return of({
       success: true,
       data: obj,
@@ -158,8 +160,8 @@ export class UserService {
 
 
 
-  setLocalStorage() {
-    localStorage.setItem('usersArray$', JSON.stringify(this.usersArray));
-  }
+  // setLocalStorage() {
+  //   localStorage.setItem('usersArray$', JSON.stringify(this.usersArray));
+  // }
 
 }

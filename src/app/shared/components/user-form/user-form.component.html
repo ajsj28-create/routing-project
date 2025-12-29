@@ -5,7 +5,7 @@
                 <div class="d-flex justify-content-between align-items-center mb-2">
                     <h2 class="mb-0">{{isEditMode ? 'Update User' : 'Add User'}}</h2>
                     <button 
-                    routerLink="/users"
+                    (click)="onFormClose()"
                     mat-mini-fab color="none" class="btn-secondary">
                         <mat-icon>close</mat-icon>
                     </button>
@@ -112,7 +112,7 @@
                     *ngIf="isEditMode"
                     mat-raised-button class="btn-block btn-secondary">Update User</button>                                                                               
                 </form>
-                <mat-error class="mt-2">{{msg}}</mat-error>
+                <mat-error *ngIf="buttonFlag" class="mt-2">{{msg}}</mat-error>
             </div> 
         </div>
     </div>
