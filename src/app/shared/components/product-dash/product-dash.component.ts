@@ -57,8 +57,12 @@ export class ProductDashComponent implements OnInit {
   }
 
   showFirstProduct(){
-    this._router.navigate(['products', this.productsArray[0].id])
-    this.selectedId = this.productsArray[0].id
+    if(this.productsArray.length > 0){
+      this._router.navigate(['products', this.productsArray[0].id])
+      this.selectedId = this.productsArray[0].id
+    }else{
+      this._router.navigate(['products'])
+    }
   }
 
   getAllProducts(){

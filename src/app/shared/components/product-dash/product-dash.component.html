@@ -5,7 +5,7 @@
             (click)="showAddForm()"
             mat-mini-fab class="back-angular"><mat-icon>add</mat-icon></button>
         </div>
-        <div class="col-md-10">
+        <div class="col-md-10" *ngIf="productsArray.length > 0; else noProducts">
             <owl-carousel-o [options]="owlConfig">
                 <ng-template carouselSlide *ngFor="let obj of productsArray">
                     <figure 
@@ -19,6 +19,11 @@
                 </ng-template>
               </owl-carousel-o>
         </div>
+        <ng-template #noProducts>
+            <div class="col-md-10 d-flex justify-content-center align-items-center">
+                <h2>No products available...Start adding products now...</h2>
+            </div>
+        </ng-template>
     </div>
     <router-outlet></router-outlet>
 </div>

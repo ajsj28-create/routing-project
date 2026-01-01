@@ -27,3 +27,7 @@ body {
 .p-rating .p-rating-icon.pi-star-fill {
     color: #ff9800;
 }
+
+.owl-theme .owl-nav [class*=owl-] {
+    background: rgba(0, 0, 0, 0.7);
+}
