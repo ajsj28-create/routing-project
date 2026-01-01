@@ -1,0 +1,38 @@
+.img-bar {
+    list-style: none;
+    height: 300px;
+    overflow-y: auto;
+}
+
+.img-bar .img-button {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
+.info, .img-wrapper {
+    border-radius: 3px;
+}
+
+.img-selected {
+    width: 100%;
+    object-fit: contain;
+}
+
+.active {
+    border: 3px solid rgba(52, 58, 64, 0.7);
+    border-radius: 3px;
+}
+
+h3.title {
+    font-size: 20px;
+}
+
+h2.price-tag {
+    font-size: 25px;
+
+    sup {
+        font-size: 15px;
+    }
+}

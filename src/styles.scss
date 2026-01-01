@@ -1,7 +1,7 @@
 body { 
     margin: 0; 
     font-family: Roboto, "Helvetica Neue", sans-serif; 
-    background-color: #f5f5f5;
+    background-color: #e3e6e6;
 }
 
 .fw-500 {
@@ -24,14 +24,6 @@ body {
     background-image: linear-gradient(135deg, #2AFADF 10%, #4C83FF 100%);
 }
 
-.snack-success {
-    background-image: linear-gradient( 135deg, #49C628 10%, #70F570 100%);
-}
-
-.snack-warning {
-    background-image: linear-gradient( 135deg, #FD6E6A 10%, #FFC600 100%);
-}
-
-.snack-success, .snack-warning {
-    color: rgba(255, 255, 255, 0.85);
+.p-rating .p-rating-icon.pi-star-fill {
+    color: #ff9800;
 }

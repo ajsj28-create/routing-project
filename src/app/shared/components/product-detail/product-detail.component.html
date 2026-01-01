@@ -1,0 +1,48 @@
+<div class="row pb-3">
+    <div class="col-md-6 mb-3 mb-md-0">
+        <div class="row">
+            <div class="col-3 col-xl-2">
+                <ul class="img-bar p-0 m-0">
+                    <li 
+                    (click)="selectedImageUrl = url"
+                    *ngFor="let url of selectedProduct.images" role="button"
+                    [class.active]="selectedImageUrl === url" class="m-1">
+                        <img [src]="url" alt="image" class="img-button">
+                    </li>
+                </ul>
+            </div>
+            <div class="col-9 col-xl-10">
+                <figure class="p-4 m-0 bg-white img-wrapper">
+                    <img [src]="selectedImageUrl" alt="image" class="img-selected">
+                </figure>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="bg-white p-3 info">
+            <h3 class="mb-1 title">{{selectedProduct.title}}</h3>
+            <p-rating class="rating"
+            [(ngModel)]="selectedProduct.rating" 
+            [readonly]="true"
+            [cancel]="false">
+            </p-rating>
+            <p class="my-2">{{selectedProduct.description | truncate}}</p>
+            <div
+            *ngIf="selectedProduct.availability === 'In Stock'; else outOfStock">
+            <small><s>{{this.selectedProduct.price | currency: 'INR'}}</s></small>
+            <h2 class="price-tag">{{+selectedProduct.price * ((100 - +selectedProduct.discount) / 100) | currency: 'INR'}} <sup class="text-danger">{{'-' + this.selectedProduct.discount + '%'}}</sup></h2> 
+            </div>
+            <ng-template #outOfStock>
+                <h2 class="mb-2 text-danger">Out of Stock</h2>
+            </ng-template>
+            <div class="d-flex justify-content-between">
+                <button 
+                (click)="showEditForm(selectedProduct)"
+                mat-mini-fab class="bg-secondary"><mat-icon>edit</mat-icon></button>
+                <button 
+                (click)="onProductRemove(selectedProduct)"
+                mat-mini-fab color="warn"><mat-icon>delete</mat-icon></button>
+            </div>
+        </div>
+    </div>
+</div>

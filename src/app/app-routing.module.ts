@@ -6,6 +6,9 @@ import { UserFormComponent } from './shared/components/user-form/user-form.compo
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 import { FairsDashComponent } from './shared/components/fairs-dash/fairs-dash.component';
 import { FairsDetailComponent } from './shared/components/fairs-detail/fairs-detail.component';
+import { ProductDashComponent } from './shared/components/product-dash/product-dash.component';
+import { ProductFormComponent } from './shared/components/product-form/product-form.component';
+import { ProductDetailComponent } from './shared/components/product-detail/product-detail.component';
 
 const routes: Routes = [
   {
@@ -38,6 +41,16 @@ const routes: Routes = [
       {
         path: ':id',
         component: FairsDetailComponent
+      }
+    ]
+  },
+  {
+    path: 'products',
+    component: ProductDashComponent,
+    children: [
+      {
+        path: ':id',
+        component: ProductDetailComponent
       }
     ]
   },

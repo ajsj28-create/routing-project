@@ -18,6 +18,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 
 import { FormsModule } from '@angular/forms';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { RatingModule } from 'primeng/rating';
+
+import { TruncatePipe } from './shared/pipes/truncate.pipe';
 
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { UserDashComponent } from './shared/components/user-dash/user-dash.component';
@@ -28,6 +32,9 @@ import { ConfirmComponent } from './shared/components/confirm/confirm.component'
 import { FairsDashComponent } from './shared/components/fairs-dash/fairs-dash.component';
 import { FairsDetailComponent } from './shared/components/fairs-detail/fairs-detail.component';
 import { FairsCardComponent } from './shared/components/fairs-card/fairs-card.component';
+import { ProductDashComponent } from './shared/components/product-dash/product-dash.component';
+import { ProductDetailComponent } from './shared/components/product-detail/product-detail.component';
+import { ProductFormComponent } from './shared/components/product-form/product-form.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +47,11 @@ import { FairsCardComponent } from './shared/components/fairs-card/fairs-card.co
     ConfirmComponent,
     FairsDashComponent,
     FairsDetailComponent,
-    FairsCardComponent
+    FairsCardComponent,
+    ProductDashComponent,
+    ProductDetailComponent,
+    ProductFormComponent,
+    TruncatePipe
   ],
   imports: [
     BrowserModule,
@@ -56,7 +67,9 @@ import { FairsCardComponent } from './shared/components/fairs-card/fairs-card.co
     FormsModule,
     MatDialogModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    CarouselModule,
+    RatingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

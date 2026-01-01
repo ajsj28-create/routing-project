@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Ifair } from '../models/fairs';
 import { fairsData } from '../const/fairsdata';
-import { Subject, of } from 'rxjs';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

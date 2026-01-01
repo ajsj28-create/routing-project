@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="row mb-2">
+        <div class="col-md-2 mb-3 mb-md-0 d-flex justify-content-center align-items-center">
+            <button
+            (click)="showAddForm()"
+            mat-mini-fab class="back-angular"><mat-icon>add</mat-icon></button>
+        </div>
+        <div class="col-md-10">
+            <owl-carousel-o [options]="owlConfig">
+                <ng-template carouselSlide *ngFor="let obj of productsArray">
+                    <figure 
+                    (click)="onProductSelect(obj)"
+                    [class.active]="obj.id === selectedId"
+                    class="img-wrapper mb-0 pt-4 px-2 bg-white" role="button">
+                        <img [src]="obj.images[0]" alt="image" class="owl-img pb-3">
+                        <p class="text-truncate mb-0 pb-1">{{obj.title}}</p>
+                        <div class="drop"></div>
+                    </figure>
+                </ng-template>
+              </owl-carousel-o>
+        </div>
+    </div>
+    <router-outlet></router-outlet>
+</div>

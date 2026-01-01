@@ -48,7 +48,7 @@ export class UserInfoComponent implements OnInit {
         if(res){
           this._userService.deleteUser(this.userObj).subscribe({
             next: res => {
-              this._snackbarService.showAlert(res.msg, 'snack-success')
+              this._snackbarService.showAlert(res.msg, 'alert-success')
               this._userService.refreshDash$.next(true)
             },
             error: err => {}

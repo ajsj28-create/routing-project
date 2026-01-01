@@ -61,7 +61,7 @@ export class UserFormComponent implements OnInit {
       this.userForm.resetForm()
       this._userService.postUser(obj).subscribe({
         next: res => {
-          this._snackbarService.showAlert(res.msg, 'snack-success')
+          this._snackbarService.showAlert(res.msg, 'alert-success')
           this._router.navigate(['users', obj.id], {
             queryParams: {role: obj.role}
           })
@@ -69,7 +69,7 @@ export class UserFormComponent implements OnInit {
         error: err => {}
       })      
     }else{
-      this._snackbarService.showAlert(`Fill all the required fields!`, 'snack-warning')
+      this._snackbarService.showAlert(`Fill all the required fields!`, 'alert-warning')
     }
   }
 
@@ -79,7 +79,7 @@ export class UserFormComponent implements OnInit {
       this.userForm.resetForm()
       this._userService.patchUser(obj).subscribe({
         next: res => {
-          this._snackbarService.showAlert(res.msg, 'snack-success')
+          this._snackbarService.showAlert(res.msg, 'alert-success')
           this._router.navigate(['users', obj.id], {
             queryParams: {role: obj.role}
           })
@@ -87,7 +87,7 @@ export class UserFormComponent implements OnInit {
         error: err => {}
       })      
     }else{
-      this._snackbarService.showAlert(`Fill all the required fields!`, 'snack-warning')
+      this._snackbarService.showAlert(`Fill all the required fields!`, 'alert-warning')
     }
   }
 
