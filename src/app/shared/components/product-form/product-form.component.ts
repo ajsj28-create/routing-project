@@ -80,6 +80,10 @@ export class ProductFormComponent implements OnInit {
       let obj = {...this.productForm.value, id: this.patchData.id}
       this._productService.updateProduct(obj).subscribe(res => {
         this._matDialogRef.close()
+        this._router.navigate([], {
+          queryParams: {},
+          replaceUrl: true
+        });
         this._snackbarService.showAlert(res.msg, 'alert-success')
       })
     }else{
